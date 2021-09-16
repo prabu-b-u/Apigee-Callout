@@ -132,6 +132,8 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 			System.out.println("Multipart Form payload formed successfully***********");
 			byte[] payload = streamToByteArray(mpf.openStream());
 			msgCtxt.setVariable(varName("payload_length"), payload.length);
+			
+			message.setHeader("Authorization", "Bearer "+msgCtxt.getVariable("accessToken"));
 			message.setHeader("content-length", payload.length);
 			message.setContent(new ByteArrayInputStream(payload));
 
