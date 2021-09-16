@@ -1,0 +1,7 @@
+<AssignMessage name='AV-TextFileData'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>textFileData</Name>
+    <Value>Hello, World</Value>
+  </AssignVariable>
+</AssignMessage>

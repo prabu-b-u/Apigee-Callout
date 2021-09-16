@@ -1,0 +1,10 @@
+<JavaCallout name='Java-SetResponseContent'>
+  <Properties>
+    <Property name="destination">message</Property>
+    <Property name="debug">true</Property>
+    <Property name="contentVar">mpf_item_content_1</Property>
+    <Property name="contentType">{mpf_item_content-type_1}</Property>
+  </Properties>
+  <ClassName>com.google.apigee.callouts.ContentSetter</ClassName>
+  <ResourceURL>java://apigee-multipart-form-20210401.jar</ResourceURL>
+</JavaCallout>

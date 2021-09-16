@@ -1,0 +1,10 @@
+<JavaCallout name='Java-CreateMultipartForm-1b'>
+  <Properties>
+    <Property name="contentVar">textFileData</Property>
+    <Property name="contentType">text/plain</Property>
+    <Property name="part-name">hello.txt</Property>
+    <Property name="destination">contrivedMessage</Property>
+  </Properties>
+  <ClassName>com.google.apigee.callouts.MultipartFormCreator</ClassName>
+  <ResourceURL>java://apigee-multipart-form-20210401.jar</ResourceURL>
+</JavaCallout>

@@ -1,0 +1,8 @@
+<AssignMessage name='AM-Response-1'>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <Set>
+    <Payload contentType='application/json'>{scResponse.content}</Payload>
+    <StatusCode>{scResponse.status.code}</StatusCode>
+    <ReasonPhrase>{scResponse.reason.phrase}</ReasonPhrase>
+  </Set>
+</AssignMessage>

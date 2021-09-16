@@ -1,0 +1,21 @@
+<JavaCallout name='Java-CreateMultipartForm-Multi'>
+  <Properties>
+    <Property name="descriptor">
+    {
+      "hello.txt" : {
+        "content-var" :  "textFileData",
+        "content-type" : "text/plain",
+        "want-b64-decode": false
+      },
+      "image.png" : {
+        "content-var" :  "base64EncodedImageData",
+        "content-type" : "image/png",
+        "want-b64-decode": true
+      }
+    }
+    </Property>
+    <Property name="destination">contrivedMessage</Property>
+  </Properties>
+  <ClassName>com.google.apigee.callouts.MultipartFormCreator</ClassName>
+  <ResourceURL>java://apigee-multipart-form-20210401.jar</ResourceURL>
+</JavaCallout>
