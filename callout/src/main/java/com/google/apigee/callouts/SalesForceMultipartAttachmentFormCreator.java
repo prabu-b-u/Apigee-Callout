@@ -121,6 +121,7 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 					System.out.println("Create Byte Array payload from the item name:{}"+item.getName());	
 					byte[] itemBytes = streamToByteArray(item.getInputStream());
 					
+					partOptions.contentType(null);
 					part = Part.create(item.getFieldName(), new ByteArrayPayload((byte[]) itemBytes),
 							partOptions);
 				}
@@ -132,6 +133,8 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 			System.out.println("Multipart Form payload formed successfully***********");
 			byte[] payload = streamToByteArray(mpf.openStream());
 			msgCtxt.setVariable(varName("payload_length"), payload.length);
+			
+			//message.setHeader("Consumer-Key", "9yYvQHjhxuEoVMVvnaQ0xd6FoxJDTmtP");
 			
 			message.setHeader("Authorization", "Bearer "+msgCtxt.getVariable("accessToken"));
 			message.setHeader("content-length", payload.length);
