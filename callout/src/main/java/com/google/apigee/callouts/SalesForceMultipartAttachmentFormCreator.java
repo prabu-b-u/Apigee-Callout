@@ -15,6 +15,7 @@ import org.jclouds.io.payloads.ByteArrayPayload;
 import org.jclouds.io.payloads.MultipartForm;
 import org.jclouds.io.payloads.Part;
 import org.jclouds.io.payloads.StringPayload;
+import org.jclouds.io.payloads.Part.PartOptions;
 
 import com.apigee.flow.execution.ExecutionContext;
 import com.apigee.flow.execution.ExecutionResult;
@@ -48,14 +49,6 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 			source = "message";
 		}
 		return source;
-	}
-
-	private String getPartContentType(MessageContext msgCtxt) throws Exception {
-		return getSimpleRequiredProperty("contentType", msgCtxt);
-	}
-
-	private String getPartName(MessageContext msgCtxt) throws Exception {
-		return getSimpleRequiredProperty("part-name", msgCtxt);
 	}
 
 	private String getDestination(MessageContext msgCtxt) throws Exception {
@@ -121,7 +114,8 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 					System.out.println("Create Byte Array payload from the item name:{}"+item.getName());	
 					byte[] itemBytes = streamToByteArray(item.getInputStream());
 					
-					partOptions.contentType(null);
+					partOptions.contentType("application/octet-stream");
+				    partOptions.filename(item.getName());
 					part = Part.create(item.getFieldName(), new ByteArrayPayload((byte[]) itemBytes),
 							partOptions);
 				}
@@ -165,6 +159,10 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 	@Override
 	public String getVarnamePrefix() {
 		 return varprefix;
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 
 }
