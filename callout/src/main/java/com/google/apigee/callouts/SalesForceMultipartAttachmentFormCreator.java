@@ -116,12 +116,12 @@ public class SalesForceMultipartAttachmentFormCreator extends CalloutBase implem
 					System.out.println("Create String payload from the item name:{}"+item.getName());	
 					
 					StringPayload payload = Payloads.newStringPayload(item.getString());
-					part = Part.create(getPartName(msgCtxt), payload, partOptions);
+					part = Part.create(item.getFieldName(), payload, partOptions);
 				} else {
 					System.out.println("Create Byte Array payload from the item name:{}"+item.getName());	
 					byte[] itemBytes = streamToByteArray(item.getInputStream());
 					
-					part = Part.create(getPartName(msgCtxt), new ByteArrayPayload((byte[]) itemBytes),
+					part = Part.create(item.getFieldName(), new ByteArrayPayload((byte[]) itemBytes),
 							partOptions);
 				}
 				mpReqParts[counter++] = part;
